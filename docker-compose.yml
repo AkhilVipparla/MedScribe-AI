@@ -1,0 +1,27 @@
+# ./docker-compose.yml
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "4131:8000"
+    volumes:
+      - ./data:/app/data
+      - ./backend:/app
+      - whisper-cache:/root/.cache
+    env_file: [.env]
+    stop_grace_period: 1m
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL}
+    ports:
+      - "4132:80"
+    env_file: [.env]
+    depends_on: [backend]
+
+volumes:
+  whisper-cache: {}

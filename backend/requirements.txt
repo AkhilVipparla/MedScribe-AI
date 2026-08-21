@@ -1,0 +1,24 @@
+# <./backend\requirements.txt>
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+
+sqlmodel==0.0.16
+pydantic-settings==2.3.1
+python-multipart==0.0.9
+
+# speech-to-text
+faster-whisper==1.1.1
+requests
+
+# Anthropic
+anthropic>=0.40.0
+
+# Background scheduling
+apscheduler~=3.10
+
+sqlalchemy>=1.4 # Already a dependency of sqlmodel, but good to be explicit for func.count
+
+groq==0.26.0
+
+# Language detection
+langdetect==1.0.9
